@@ -24,8 +24,6 @@ def main():
 
         if (all(current_version == latest_version)):
 
-            print('already got it')
-
             return
 
     else:
