@@ -70,8 +70,9 @@ def update_data(date,url):
 
 
 
-
+#Searches for the most recently updated LFS microdata file from Statscan going back max_months = 3 .
 def get_latest(url):
+
 
     max_months = 3
 

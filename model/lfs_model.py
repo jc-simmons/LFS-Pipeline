@@ -1,11 +1,10 @@
 import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
-from sklearn.linear_model import Ridge, Lasso, HuberRegressor, RANSACRegressor, QuantileRegressor
+from sklearn.linear_model import Ridge, Lasso, HuberRegressor,  QuantileRegressor
 from sklearn.preprocessing import MinMaxScaler, PolynomialFeatures
-from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor, HistGradientBoostingRegressor, BaggingRegressor, AdaBoostRegressor
+from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
 from sklearn.metrics import r2_score
-from sklearn.svm import SVR
 from matplotlib import pyplot as plt
 from random import seed, random
 from sklearn.compose import TransformedTargetRegressor
@@ -27,11 +26,10 @@ def main():
     
     df=df[features]
 
-    numeric_features = ['HRLYEARN','TENURE','UHRSMAIN']
+    numeric_features = ['TENURE','UHRSMAIN','AGE_12_NUM']
     cat_features = list(set(df.columns)-set(numeric_features))
+    cat_features.remove('HRLYEARN')
 
-
-    df=df.drop(df[df.HRLYEARN < 1400].index)
 
     df = encode_onehot(df,numeric_features)
 
@@ -95,12 +93,14 @@ def normalize_data(df,numeric_features):
     return df
 
 
+
 def encode_onehot(df,numeric_features):
      
     cat_features = list(set(df.columns)-set(numeric_features))
     df = pd.get_dummies(df,columns=cat_features)       
 
     return df
+
 
 def aggregate_importance(feature_importance,labels,cat_features):
      
