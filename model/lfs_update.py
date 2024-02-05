@@ -5,6 +5,8 @@ import os
 import datetime
 import numpy as np
 
+
+
 def main():
 
     os.chdir('data')
@@ -21,6 +23,8 @@ def main():
         current_version = np.loadtxt(version_path)
 
         if (all(current_version == latest_version)):
+
+            print('already got it')
 
             return
 
@@ -44,6 +48,7 @@ def main():
 
 
 
+
 def update_data(date,url):
 
     path = '../data'
@@ -55,51 +60,51 @@ def update_data(date,url):
 
     file_name = str(date[1]) + '-' + '{:02d}'.format(date[0]) + '-CSV' + '.zip'
 
-    url = 'https://www150.statcan.gc.ca/n1/pub/71m0001x/2021001/'
 
     urllib.request.urlretrieve(url+file_name, file_name)
     unzip(file_name)
 
-    os.rename('pub'+'{:02d}'.format(date[0])+str(date[1])[-2:]+'.csv', 'data_current.csv')
-    np.savetxt('data_version.txt', date,fmt="%s")
+    os.rename('pub'+'{:02d}'.format(date[0])+str(date[1])[-2:]+'.csv', 'raw_lfs_data.csv.csv')
+    np.savetxt('data_version.txt', date, fmt="%s")
 
 
     return 
 
 
-#if lasts month's data doesn't exist yet, report date two months ago
+
+
 def get_latest(url):
 
-    date = previous_date(1)
+    max_months = 3
 
-    file_name = str(date[1]) + '-' + '{:02d}'.format(date[0]) + '-CSV' + '.zip'
+    date = datetime.datetime.now()
+    month = date.month
+    year = date.year
+
+    for i in range(max_months):
+
+        year = year if month > 1 else year - 1
+        month = month-1 if month > 1 else 12
+
+
+        file_name = str(year) + '-' + '{:02d}'.format(month) + '-CSV' + '.zip'
+
+        if exists(url + file_name):
+
+            return [month, year]
 
     
+    raise Exception(f"No LFS data found at source in past {max_months} months")
 
-    if exists(url + file_name):
 
-        return date
+    return
 
-    else:
 
-        date = previous_date(2)
-
-        return date
 
 
 def exists(path):
     r = requests.head(path)
     return r.status_code == requests.codes.ok
-   
-
-def previous_date(months):
-
-    date = datetime.datetime.now()
-    last_month = date.month-months if date.month > months else 13-months
-    last_year = date.year if date.month > months else date.year - 1
-
-    return [last_month, last_year]
-
 
 
 
