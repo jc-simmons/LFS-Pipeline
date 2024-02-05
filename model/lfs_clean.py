@@ -144,9 +144,6 @@ def drop_data(input_data):
                     'PRIORACT','YNOLOOK','TLOLOOK',
                     'LKPUBAG','EVERWORK','PREVTEN','FTPTLAST']
     
-
-    print(df.columns)
-
     # drop any rows with having unemploymnent indicators
     df = df.drop(df.dropna(subset=unemployed_cols).index)
 
