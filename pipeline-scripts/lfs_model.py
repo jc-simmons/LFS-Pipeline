@@ -17,7 +17,7 @@ def main():
 
     df = pd.read_csv('data/cleaned_lfs.csv')
 
-    os.chdir('model')
+    os.chdir('pipeline-scripts')
 
     # features of interest for modelling
     features=['AGE_12_NUM','FTPTMAIN','SEX','EDUC',
