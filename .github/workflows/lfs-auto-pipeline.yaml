@@ -21,12 +21,12 @@ jobs:
     
       - name: Install necessary libraries
         run: |
-            pip install -r src/reqs-update.txt
+            pip install -r pipeline-scripts/reqs-update.txt
 
       - name: Execute Script
         env:
           URI: ${{ secrets.GITHUB_TOKEN }}
-        run: python src/lfs_update.py
+        run: python pipeline-scripts/lfs_update.py
         id: clean
         
       - name: Commit and push if changed
@@ -56,12 +56,12 @@ jobs:
           
       - name: Install necessary libraries
         run: |
-            pip install -r src/reqs-clean.txt      
+            pip install -r pipeline-scripts/reqs-clean.txt      
 
       - name: Execute Script
         env:
           URI: ${{ secrets.GITHUB_TOKEN }}
-        run: python src/lfs_clean.py
+        run: python pipeline-scripts/lfs_clean.py
      
       - name: Commit and push
         run: |-
@@ -90,12 +90,12 @@ jobs:
           
       - name: Install necessary libraries
         run: |
-            pip install -r src/reqs-model.txt      
+            pip install -r pipeline-scripts/reqs-model.txt      
 
       - name: Execute Script
         env:
           URI: ${{ secrets.GITHUB_TOKEN }}
-        run: python src/lfs_model.py
+        run: python pipeline-scripts/lfs_model.py
      
       - name: Commit and push
         run: |-
