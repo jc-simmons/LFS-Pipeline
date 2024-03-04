@@ -87,7 +87,7 @@ def main():
 
 
 
-def normalize_data(df,numeric_features):
+def normalize_data(df,cat_features):
 
     scaler = MinMaxScaler()
     df[numeric_features] = scaler.fit_transform(df[numeric_features])
