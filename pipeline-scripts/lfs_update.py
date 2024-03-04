@@ -9,6 +9,10 @@ import numpy as np
 
 def main():
 
+    df = pd.read_csv('data/cleaned_lfs.csv')
+
+    return
+    
     os.chdir('data')
 
     url='https://www150.statcan.gc.ca/n1/pub/71m0001x/2021001/'
