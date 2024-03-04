@@ -26,7 +26,7 @@ def main():
 
     cleaned_data = drop_data(decoded_data)
 
-    decoded_data.to_csv('cleaned_lfs.csv',index=False)
+    cleaned_data.to_csv('cleaned_lfs.csv',index=False)
 
 
 
