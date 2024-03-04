@@ -10,7 +10,11 @@ import pandas as pd
 
 def main():
 
-    os.chdir('data')
+    #os.chdir('data')
+
+    df = pd.read_csv('cleaned_lfs.csv')
+
+    return
 
     url='https://www150.statcan.gc.ca/n1/pub/71m0001x/2021001/'
 
