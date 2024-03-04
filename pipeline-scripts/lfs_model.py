@@ -14,8 +14,10 @@ import os
 
 
 def main():
+
+    os.chdir('../logs')
     
-    df = pd.read_csv('../data/cleaned_lfs.csv')
+    df = pd.read_csv('cleaned_lfs.csv')
 
     os.chdir('../logs')
 
