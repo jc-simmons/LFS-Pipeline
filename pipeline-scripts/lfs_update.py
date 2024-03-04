@@ -10,11 +10,7 @@ import pandas as pd
 
 def main():
 
-    #os.chdir('data')
-
-    df = pd.read_csv('data/cleaned_lfs.csv')
-
-    return
+    os.chdir('data')
 
     url='https://www150.statcan.gc.ca/n1/pub/71m0001x/2021001/'
 
@@ -46,6 +42,8 @@ def main():
         if "GITHUB_OUTPUT" in os.environ :
             with open(os.environ["GITHUB_OUTPUT"], "a") as f :
                 print("{0}={1}".format(output_status, value), file=f)
+
+    os.chdir('..')
 
     return 
 
