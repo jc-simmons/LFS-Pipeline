@@ -29,6 +29,9 @@ def main():
 
     cleaned_data.to_csv('cleaned_lfs.csv',index=False)
 
+    os.chdir('..')
+
+    return
 
 
 
