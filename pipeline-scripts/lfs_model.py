@@ -31,7 +31,7 @@ def main():
     cat_features.remove('HRLYEARN')
 
 
-    df = encode_onehot(df,numeric_features)
+    df = encode_onehot(df,cat_features)
 
     X=df.drop('HRLYEARN', axis=1)
     y=df[['HRLYEARN']] 
@@ -96,7 +96,6 @@ def normalize_data(df,numeric_features):
 
 def encode_onehot(df,numeric_features):
      
-    cat_features = list(set(df.columns)-set(numeric_features))
     df = pd.get_dummies(df,columns=cat_features)       
 
     return df
