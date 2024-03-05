@@ -9,7 +9,7 @@ def main():
 
     os.chdir('data')
     
-    raw_data = pd.read_csv(r'/home/runner/work/workflow_testing/workflow_testing/data/raw_lfs_data.csv')
+    raw_data = pd.read_csv(r'/home/runner/work/LFS-Analysis/LFS-Analysis/data/raw_lfs_data.csv')
 
     # keep a copy of the numerical age labels before decoding 
     age_12_num = raw_data['AGE_12'].copy()
