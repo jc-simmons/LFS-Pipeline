@@ -8,12 +8,8 @@ warnings.simplefilter(action='ignore', category=FutureWarning)
 def main():
 
     os.chdir('data')
-
-    df = pd.read_csv('cleaned_lfs.csv')
-
-    return 
     
-    raw_data = pd.read_csv('raw_lfs_data.csv')
+    raw_data = pd.read_csv(r'/home/runner/work/workflow_testing/workflow_testing/data/raw_lfs_data.csv')
 
     # keep a copy of the numerical age labels before decoding 
     age_12_num = raw_data['AGE_12'].copy()
@@ -33,9 +29,6 @@ def main():
 
     cleaned_data.to_csv('cleaned_lfs.csv',index=False)
 
-    df = pd.read_csv('cleaned_lfs.csv')
-
-    os.chdir('..')
 
     return
 
