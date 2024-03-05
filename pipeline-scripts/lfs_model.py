@@ -16,9 +16,31 @@ import os
 def main():
 
     
-    df = pd.read_csv(r'/home/runner/work/LFS-Analysis/LFS-Analysis/data/cleaned_lfs.csv')
+    os.chdir('data')
+    
+    cwd = os.getcwd()
 
-    os.chdir('../logs')
+    print('_______')
+    print(cwd)
+    print(' ')
+
+    df = pd.read_csv(r'/home/runner/work/workflow_testing/workflow_testing/data/cleaned.csv')
+
+    os.chdir('..')
+    
+    cwd = os.getcwd()
+
+    print(' ')
+    print(cwd)
+    print(' ')
+
+    os.chdir('logs')
+    
+    cwd = os.getcwd()
+
+    print(' ')
+    print(cwd)
+    print(' ')
 
     # features of interest for modelling
     features=['AGE_12_NUM','FTPTMAIN','SEX','EDUC',
