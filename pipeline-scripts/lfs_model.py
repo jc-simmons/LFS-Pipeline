@@ -16,7 +16,7 @@ import os
 def main():
 
     
-    df = pd.read_csv(r'/home/runner/work/workflow_testing/workflow_testing/data/cleaned_lfs.csv')
+    df = pd.read_csv(r'/home/runner/work/LFS-Analysis/LFS-Analysis/data/cleaned_lfs.csv')
 
     os.chdir('../logs')
 
