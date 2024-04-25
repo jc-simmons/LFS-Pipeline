@@ -17,23 +17,9 @@ from sklearn.compose import ColumnTransformer
 
 def main():
 
-    print('!!!!!!!!!!!!!!!!!')
-    cwd = os.getcwd()
-    print(cwd)
-    print('!!!!!!!!!!!!!!!!!')
-    os.chdir('data')
 
-    cwd = os.getcwd()
-    print(cwd)
-    print('!!!!!!!!!!!!!!!!!')
-
-    dir_list = os.listdir()
-    for item in dir_list:
-        print(item)
-
-    print('!!!!!!!!!!!!!!!!!')
-
-    data_path = pathlib.Path('cleaned_lfs.csv')
+    #data_path = pathlib.Path('cleaned_lfs.csv')
+    data_path = 'data/cleaned_lfs.csv'
     df = pd.read_csv(data_path)
 
     # features of interest for modelling
@@ -142,4 +128,4 @@ def returner():
 # run script
 if __name__ == "__main__":
     
-    returner()
+    main()
