@@ -1,5 +1,9 @@
 import numpy as np
 import pandas as pd
+import json
+import os
+import pathlib
+
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler, OneHotEncoder
 from sklearn.ensemble import  GradientBoostingRegressor
@@ -7,8 +11,7 @@ from sklearn.metrics import r2_score
 from matplotlib import pyplot as plt
 from sklearn.pipeline import Pipeline
 from sklearn.compose import ColumnTransformer
-import json
-import os
+
 
 
 
@@ -16,7 +19,9 @@ def main():
 
     cwd = os.getcwd()
     print(cwd)
-    df = pd.read_csv('data/cleaned_lfs.csv')
+
+    data_path = pathlib.Path('data/cleaned_lfs.csv')
+    df = pd.read_csv(data_path)
 
     # features of interest for modelling
     features=['AGE_12_NUM','FTPTMAIN','SEX','EDUC',
