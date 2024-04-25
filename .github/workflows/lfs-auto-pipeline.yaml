@@ -13,7 +13,11 @@ jobs:
 
       - name: Access the repo
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          ref: main
 
+          
       - name: Configure Python
         uses: actions/setup-python@v2
         with:
@@ -51,6 +55,9 @@ jobs:
    
       - name: Access the repo
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          ref: main
 
       - name: Configure Python
         uses: actions/setup-python@v2
@@ -91,7 +98,10 @@ jobs:
    
       - name: Access the repo
         uses: actions/checkout@v3
-
+        with:
+          fetch-depth: 0
+          ref: main
+          
       - name: Configure Python
         uses: actions/setup-python@v2
         with:
