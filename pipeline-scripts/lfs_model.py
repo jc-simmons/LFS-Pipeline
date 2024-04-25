@@ -31,6 +31,8 @@ def main():
 
     X=df.drop('HRLYEARN', axis=1)
     y=df[['HRLYEARN']] 
+
+    X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=0)
     
 
     ct = ColumnTransformer([
@@ -44,12 +46,6 @@ def main():
         ])
 
     reg = pipe.fit(X_train, y_train.to_numpy().ravel())
-
-    
-    X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=0)
-
-    reg = train_model(X_train,y_train)
-
 
    # log metrics
     y_predict = reg.predict(X_test)
