@@ -26,6 +26,13 @@ def main():
     cwd = os.getcwd()
     print(cwd)
     print('!!!!!!!!!!!!!!!!!')
+
+    dir_list = os.listdir()
+    for item in dir_list:
+        print(item)
+
+    print('!!!!!!!!!!!!!!!!!')
+
     data_path = pathlib.Path('cleaned_lfs.csv')
     df = pd.read_csv(data_path)
 
