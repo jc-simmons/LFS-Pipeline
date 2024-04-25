@@ -16,7 +16,7 @@ def main():
 
     cwd = os.getcwd()
     print(cwd)
-    df = pd.read_csv('data/cleaned_lfs.csv')
+    df = pd.read_csv('/data/cleaned_lfs.csv')
 
     # features of interest for modelling
     features=['AGE_12_NUM','FTPTMAIN','SEX','EDUC',
