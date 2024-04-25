@@ -1,94 +1,15 @@
-NOC_43 0.3198799395776217
-NAICS_21 0.13016957146614808
-AGE_12_NUM 0.12794053884955545
-TENURE 0.12449750736371587
-UHRSMAIN 0.10733716238432005
-EDUC 0.08776928320842654
-PROV 0.07396606136622423
-"NOC_43_Sales and service support occupations" 0.05820271216047882
-"NOC_43_Specialized middle management occupations" 0.030630513233649938
-SEX 0.02525580871010645
-"NAICS_21_Retail trade" 0.02464309786166218
-"EDUC_Bachelor's degree" 0.0243329653660738
-"EDUC_Above bachelor's degree" 0.02054169856180877
-"NAICS_21_Public administration" 0.019054258507470927
-"NOC_43_Nursing and allied health professionals" 0.01825499892122354
-"NOC_43_Administrative and financial support and supply chain logistics occupations" 0.017992084677217277
-"NOC_43_Assisting occupations in support of health services" 0.016905773502088335
-"EDUC_Postsecondary certificate or diploma" 0.015298678195124054
-SEX_Female 0.01514426455630444
-"EDUC_High school graduate" 0.014075565807247744
-"NAICS_21_Accommodation and food services" 0.013886298844615523
-"PROV_British Columbia" 0.013680542392397445
-"NOC_43_Professional occupations in education services" 0.013499573044957682
-"NOC_43_Professional occupations in applied sciences (except engineering)" 0.013200262455305778
-"NOC_43_Sales and service representatives and other customer and personal services occupations" 0.01187885401497983
-PROV_Ontario 0.010875262020896368
-"NAICS_21_Mining, quarrying, and oil and gas extraction" 0.01024273283012573
-SEX_Male 0.010111544153802013
-"NOC_43_Machine operators, assemblers and inspectors in processing, manufacturing and printing" 0.009686060931896475
-"NOC_43_Helpers and labourers and other transport drivers, operators and labourers" 0.009219912924350766
-PROV_Quebec 0.0090610645315729
-"NOC_43_Administrative occupations and transportation logistics occupations" 0.009047341079131634
-"NOC_43_Paraprofessional occupations in legal, social, community and education services" 0.008771087569214537
-"NOC_43_Middle management occupations in trades, transportation, production and utilities" 0.008609471083421095
-PROV_Alberta 0.008433035749379
-"NOC_43_General trades" 0.007924720857186393
-"NAICS_21_Professional, scientific and technical services" 0.006893783556330847
-"EDUC_Some high school" 0.006581965241714615
-"NOC_43_Health treating and consultation services professionals" 0.006456737886805061
-PROV_Manitoba 0.006456145482939914
-"NOC_43_Technical trades and transportation officers and controllers" 0.006398753425196216
-"NOC_43_Technical occupations in health" 0.006311851390576526
-"NOC_43_Middle management occupations in retail and wholesale trade and customer services" 0.006178948008020439
-"PROV_New Brunswick" 0.006072038797133775
-"PROV_Nova Scotia" 0.0060190029305037624
-"NAICS_21_Health care and social assistance" 0.005941976258950456
-NAICS_21_Construction 0.0058109118797589196
-"NAICS_21_Business, building and other support services" 0.005620011609962071
-"NOC_43_Professional occupations in engineering" 0.005562191457875842
-NAICS_21_Utilities 0.00551677407569034
-"NOC_43_Care providers and public protection support occupations and student monitors, crossing guards and related occupations" 0.005230256986430485
-"NAICS_21_Other services (except public administration)" 0.004966210921596366
-"NOC_43_Occupations in sales and services" 0.00496614561701587
-"NAICS_21_Finance and insurance" 0.0049375024192597474
-"PROV_Newfoundland and Labrador" 0.004902473685889538
-PROV_Saskatchewan 0.004790655939938201
-"EDUC_Some postsecondary" 0.004374593188842529
-"NOC_43_Labourers in processing, manufacturing and utilities" 0.00378742678970491
-"NOC_43_Assisting occupations in education and in legal and public protection" 0.0037659530887965585
-"PROV_Prince Edward Island" 0.003675839835573327
-"NAICS_21_Educational services" 0.003611425619662675
-"NOC_43_Retail sales and service supervisors and specialized occupations in sales and services" 0.0034491050904257303
-"NOC_43_Professional occupations in finance" 0.003411125271394683
-"NAICS_21_Wholesale trade" 0.0033465798244931714
-"NOC_43_Professional occupations in business" 0.0032892692451493197
-"NOC_43_Therapy and assessment professionals" 0.0032770149881847796
-FTPTMAIN 0.0031841270738816214
-"NAICS_21_Information, culture and recreation" 0.0030665154963831123
-"NOC_43_Occupations in front-line public protection services" 0.0030558067166002512
-"NAICS_21_Transportation and warehousing" 0.0027812180657766443
-"NAICS_21_Manufacturing - durable goods" 0.00275373514405284
-"NAICS_21_Manufacturing - non-durable goods" 0.0026490238536204295
-"EDUC_0 to 8 years" 0.0025638168476150138
-"NOC_43_Mail and message distribution, other transport equipment operators and related maintenance workers" 0.002505730342648753
-NAICS_21_Agriculture 0.0024108223025178393
-"NOC_43_Professional occupations in law" 0.002378883190056055
-"NOC_43_Administrative and financial supervisors and specialized administrative occupations" 0.0022252516257880916
-"NOC_43_Workers and labourers in natural resources, agriculture and related production" 0.002104579897780877
-"NOC_43_Legislative and senior management occupations" 0.0020600454472720136
-"NOC_43_Professional occupations in government services" 0.0020533766492156387
-FTPTMAIN_Part-time 0.0017094040442713451
-"NOC_43_Technical occupations related to natural and applied sciences" 0.0016004369794075824
-FTPTMAIN_Full-time 0.0014747230296102765
-"NAICS_21_Real estate and rental and leasing" 0.0013846981688532725
-"NOC_43_Supervisors, central control and process operators in processing, manufacturing and utilities and aircraft assemblers and inspectors" 0.001182446386607656
-"NOC_43_Professional occupations in social and community services" 0.0010919671150906687
-"NOC_43_Professional occupations in art and culture" 0.0010698235377935615
-"NOC_43_Support occupations in art, culture and sport" 0.0008155385096204496
-"NOC_43_Supervisors and occupations in natural resources, agriculture and related production" 0.0005351309622578261
-"NOC_43_Technical occupations in art, culture and sport" 0.00045835653387883766
-"NAICS_21_Forestry and logging and support activities for forestry" 0.000453672415645138
-"NOC_43_Professional occupations in natural sciences" 0.00045243196266282494
-"NOC_43_Occupations in art, culture and sport" 0.0003819880202620734
-"NAICS_21_Fishing, hunting and trapping" 0.00019832180971981884
+AGE_12_NUM 0.12412291199028992
+FTPTMAIN 0.12076999681086163
+SEX 0.11018553757443542
+TENURE 0.01923907258210167
+SEX 0.01744177965824457
+EDUC 0.012735531387600372
+NOC_43 0.01176308485935016
+PROV 0.008791127649639179
+UHRSMAIN 0.0076788370827063565
+EDUC 0.006902536340765527
+FTPTMAIN 0.006120329297874534
+NOC_43 0.0058070719636893
+NAICS_21 0.0040545060669447235
+PROV 0.00296789578550991
+NAICS_21 0.0017016119369487619
