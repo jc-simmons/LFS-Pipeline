@@ -43,8 +43,7 @@ def main():
             with open(os.environ["GITHUB_OUTPUT"], "a") as f :
                 print("{0}={1}".format(output_status, value), file=f)
 
-    os.chdir('..')
-
+   
     return 
 
 
