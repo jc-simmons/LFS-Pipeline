@@ -53,7 +53,7 @@ def update_data(date,url):
 
     path = 'data'
 
-    dir_list = os.listdir()
+    dir_list = os.listdir(path)
     for item in dir_list:
         os.remove(os.path.join(path,item))
         
