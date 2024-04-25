@@ -79,12 +79,13 @@ jobs:
           git commit -m "Clean LFS data: ${timestamp}" || exit 0
           git push 
 
-
+      - name: wait
+        run: sleep 30s
           
      
   model-data: 
    needs: clean-data
-   if: needs.update-data.outputs.update_status == 'updated'
+   if: needs.update-data.outputs.update_status == 'uated'
    runs-on: ubuntu-latest
    steps:
    
