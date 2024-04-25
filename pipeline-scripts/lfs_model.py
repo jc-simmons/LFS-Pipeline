@@ -18,8 +18,7 @@ from sklearn.compose import ColumnTransformer
 def main():
 
 
-    #data_path = pathlib.Path('cleaned_lfs.csv')
-    data_path = 'data/cleaned_lfs.csv'
+    data_path = pathlib.Path('data/cleaned_lfs.csv')
     df = pd.read_csv(data_path)
 
     # features of interest for modelling
