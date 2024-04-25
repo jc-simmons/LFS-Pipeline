@@ -14,14 +14,9 @@ import os
 
 def main():
 
-    cwd = os.getcwd()
-    print(cwd)
-    #os.chdir('data')
-    #df = pd.read_csv(r'/home/runner/work/LFS-Analysis/LFS-Analysis/data/cleaned_lfs.csv')
+    df = pd.read_csv(r'/home/runner/work/LFS-Analysis/LFS-Analysis/data/cleaned_lfs.csv')
     
-    df = pd.read_csv('cleaned_lfs.csv')
     os.chdir('../logs')
-
 
     # features of interest for modelling
     features=['AGE_12_NUM','FTPTMAIN','SEX','EDUC',
@@ -124,13 +119,6 @@ def aggregate_importance(feature_importance,labels,cat_features):
        
     return final_importances
 
-
-def train_model(X_train, y_train):
-
-        model  = GradientBoostingRegressor(loss='absolute_error', n_estimators=100,
-                                            max_depth=10).fit(X_train, y_train.to_numpy().ravel())
-
-        return model 
 
 # run script
 if __name__ == "__main__":
