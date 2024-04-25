@@ -1,0 +1,37 @@
+name: update
+on:
+  workflow_dispatch: 
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+    outputs: 
+      update_status: ${{  steps.clean.outputs.status  }}    
+    steps:
+
+      - name: Access the repo
+        uses: actions/checkout@v2
+
+      - name: Configure Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.10.9'
+    
+      - name: Install necessary libraries
+        run: |
+            pip install -r pipeline-scripts/reqs-update.txt
+
+      - name: Execute Script
+        env:
+          URI: ${{ secrets.GITHUB_TOKEN }}
+        run: python pipeline-scripts/lfs_update.py
+        id: clean
+        
+      - name: Commit and push if changed
+        run: |-
+          git config user.name "${GITHUB_ACTOR}"
+          git config user.email "${GITHUB_ACTOR_ID}+${GITHUB_ACTOR}@users.noreply.github.com"
+          git add -A
+          timestamp=$(date -u)
+          git commit -m "Update LFS data: ${timestamp}" || exit 0
+          git push     
