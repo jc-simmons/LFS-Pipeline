@@ -14,9 +14,9 @@ import os
 
 def main():
 
-    df = pd.read_csv(r'/home/runner/work/LFS-Analysis/LFS-Analysis/data/cleaned_lfs.csv')
-    
-    os.chdir('../logs')
+    cwd = os.getcwd()
+    print(cwd)
+    df = pd.read_csv('data/cleaned_lfs.csv')
 
     # features of interest for modelling
     features=['AGE_12_NUM','FTPTMAIN','SEX','EDUC',
@@ -61,6 +61,8 @@ def main():
 
     metrics = [MAE,RMSE,R2]
 
+
+    os.chdir('logs')
     with open("metrics.json",'w') as outfile:
         json.dump(metrics,outfile)
 
