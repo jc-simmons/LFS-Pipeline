@@ -1,16 +1,15 @@
 import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
-from sklearn.linear_model import Ridge, Lasso, HuberRegressor,  QuantileRegressor
-from sklearn.preprocessing import MinMaxScaler, PolynomialFeatures
-from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
+from sklearn.preprocessing import MinMaxScaler, OneHotEncoder
+from sklearn.ensemble import  GradientBoostingRegressor
 from sklearn.metrics import r2_score
 from matplotlib import pyplot as plt
-from random import seed, random
-from sklearn.compose import TransformedTargetRegressor
-from sklearn.preprocessing import QuantileTransformer
+from sklearn.pipeline import Pipeline
+from sklearn.compose import ColumnTransformer
 import json
 import os
+
 
 
 def main():
