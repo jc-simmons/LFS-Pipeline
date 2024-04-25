@@ -3,13 +3,14 @@ import pandas as pd
 import pickle
 import os
 import warnings
+import pathlib
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
 def main():
 
     #os.chdir('data')
-    
-    raw_data = pd.read_csv('data/raw_lfs_data.csv')
+    raw_path = pathlib.Path('data/raw_lfs_data.csv')
+    raw_data = pd.read_csv(raw_path)
 
     # keep a copy of the numerical age labels before decoding 
     age_12_num = raw_data['AGE_12'].copy()
