@@ -17,14 +17,15 @@ from sklearn.compose import ColumnTransformer
 
 def main():
 
+    print('!!!!!!!!!!!!!!!!!')
     cwd = os.getcwd()
     print(cwd)
-
+    print('!!!!!!!!!!!!!!!!!')
     os.chdir('data')
 
     cwd = os.getcwd()
     print(cwd)
-    
+    print('!!!!!!!!!!!!!!!!!')
     data_path = pathlib.Path('cleaned_lfs.csv')
     df = pd.read_csv(data_path)
 
