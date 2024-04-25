@@ -7,9 +7,9 @@ warnings.simplefilter(action='ignore', category=FutureWarning)
 
 def main():
 
-    os.chdir('data')
+    #os.chdir('data')
     
-    raw_data = pd.read_csv('raw_lfs_data.csv')
+    raw_data = pd.read_csv('data/raw_lfs_data.csv')
 
     # keep a copy of the numerical age labels before decoding 
     age_12_num = raw_data['AGE_12'].copy()
@@ -27,7 +27,7 @@ def main():
 
     cleaned_data = drop_data(decoded_data)
 
-    cleaned_data.to_csv('cleaned_lfs.csv',index=False)
+    cleaned_data.to_csv('data/cleaned_lfs.csv',index=False)
 
 
     return
@@ -36,7 +36,7 @@ def main():
 
 def decode_lfs_labels(df):
 
-    with open('lfs_code_dict.txt', 'rb') as handle:
+    with open('data/lfs_code_dict.txt', 'rb') as handle:
         code_dict = pickle.loads(handle.read())
 
 
@@ -63,7 +63,7 @@ def gen_code_dict():
 
     result is a dictionary of dictionaries:    { variable: {   {variable_val: variable_label} , .. } , .. } 
     """
-    code_list=pd.read_csv('LFS_PUMF_EPA_FGMD_codebook.csv', encoding = 'latin1').to_numpy()
+    code_list=pd.read_csv('data/LFS_PUMF_EPA_FGMD_codebook.csv', encoding = 'latin1').to_numpy()
 
     code_dict = {}
 
@@ -88,7 +88,7 @@ def gen_code_dict():
             code_dict[variable][variable_val] = label
 
 
-    with open('lfs_code_dict.txt','wb') as handle:
+    with open('data/lfs_code_dict.txt','wb') as handle:
         pickle.dump(code_dict,handle)
         
 
