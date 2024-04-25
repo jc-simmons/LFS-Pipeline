@@ -62,8 +62,7 @@ def main():
     metrics = [MAE,RMSE,R2]
 
 
-    os.chdir('logs')
-    with open("metrics.json",'w') as outfile:
+    with open("logs/metrics.json",'w') as outfile:
         json.dump(metrics,outfile)
 
 
@@ -78,7 +77,7 @@ def main():
 
 
     plt.tight_layout()
-    plt.savefig("residuals.png")
+    plt.savefig("logs/residuals.png")
 
     plt.clf()
 
@@ -90,7 +89,7 @@ def main():
   
     imp_df = pd.DataFrame(importances)
 
-    imp_df.to_csv("importances.txt",index=False,header=None,sep=' ')
+    imp_df.to_csv("logs/importances.txt",index=False,header=None,sep=' ')
 
     return
 
