@@ -20,7 +20,7 @@ def main():
     cwd = os.getcwd()
     print(cwd)
 
-    data_path = pathlib.Path('data/cleaned_lfs.csv')
+    data_path = pathlib.Path('../data/cleaned_lfs.csv')
     df = pd.read_csv(data_path)
 
     # features of interest for modelling
