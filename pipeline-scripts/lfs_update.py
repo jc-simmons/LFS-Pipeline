@@ -27,21 +27,21 @@ def main():
 
             return
 
-    else:
 
-        update_data(latest_version,url)
-        """Sets the GitHub Action output.
-    
-        Keyword arguments:
-        output_name - The name of the output
-        value - The value of the output
-        """
-        output_status = 'status'
-        value = 'updated'
-            
-        if "GITHUB_OUTPUT" in os.environ :
-            with open(os.environ["GITHUB_OUTPUT"], "a") as f :
-                print("{0}={1}".format(output_status, value), file=f)
+
+    update_data(latest_version,url)
+    """Sets the GitHub Action output.
+
+    Keyword arguments:
+    output_name - The name of the output
+    value - The value of the output
+    """
+    output_status = 'status'
+    value = 'updated'
+        
+    if "GITHUB_OUTPUT" in os.environ :
+        with open(os.environ["GITHUB_OUTPUT"], "a") as f :
+            print("{0}={1}".format(output_status, value), file=f)
 
    
     return 
