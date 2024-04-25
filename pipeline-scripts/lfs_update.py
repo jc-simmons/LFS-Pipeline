@@ -64,7 +64,7 @@ def update_data(date,url):
     urllib.request.urlretrieve(url+file_name, file_name)
     unzip(file_name)
 
-    os.rename('pub'+'{:02d}'.format(date[0])+str(date[1])[-2:]+'.csv', 'data/raw_lfs_data.csv')
+    os.rename('pub'+'{:02d}'.format(date[0])+str(date[1])[-2:]+'.csv', 'raw_lfs_data.csv')
     np.savetxt('data_version.txt', date, fmt="%s")
 
     os.chdir('../')
