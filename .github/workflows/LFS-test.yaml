@@ -24,3 +24,13 @@ jobs:
         env:
           URI: ${{ secrets.GITHUB_TOKEN }}
         run: python pipeline-scripts/lfs_model.py
+
+      - name: Commit and push
+        run: |-
+          git config user.name "${GITHUB_ACTOR}"
+          git config user.email "${GITHUB_ACTOR_ID}+${GITHUB_ACTOR}@users.noreply.github.com"
+          git pull origin main
+          git add -A
+          timestamp=$(date -u)
+          git commit -m "Train new model: ${timestamp}" || exit 0
+          git push   
