@@ -36,7 +36,10 @@ jobs:
           git add -A
           timestamp=$(date -u)
           git commit -m "Update LFS data: ${timestamp}" || exit 0
-          git push     
+          git push
+
+      - name: wait
+        run: sleep 30s
                   
         
           
@@ -72,6 +75,10 @@ jobs:
           timestamp=$(date -u)
           git commit -m "Clean LFS data: ${timestamp}" || exit 0
           git push 
+
+
+      - name: wait
+        run: sleep 30s
           
      
   model-data: 
