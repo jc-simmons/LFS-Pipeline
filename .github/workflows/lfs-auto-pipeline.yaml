@@ -85,7 +85,7 @@ jobs:
      
   model-data: 
    needs: clean-data
-   if: needs.update-data.outputs.update_status == 'uated'
+   if: needs.update-data.outputs.update_status == 'updated'
    runs-on: ubuntu-latest
    steps:
    
