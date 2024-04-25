@@ -1,4 +1,4 @@
-name: LFS-pipeline
+name: clean
 on:
   workflow_dispatch: 
 
