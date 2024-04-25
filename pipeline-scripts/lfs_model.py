@@ -16,31 +16,12 @@ import os
 def main():
 
     
-    os.chdir('data')
+    #os.chdir('data')
+    #df = pd.read_csv(r'/home/runner/work/LFS-Analysis/LFS-Analysis/data/cleaned_lfs.csv')
     
-    cwd = os.getcwd()
+    df = pd.read_csv('data/cleaned_lfs.csv')
+    os.chdir('../logs')
 
-    print('_______')
-    print(cwd)
-    print(' ')
-
-    df = pd.read_csv(r'/home/runner/work/LFS-Analysis/LFS-Analysis/data/cleaned_lfs.csv')
-
-    os.chdir('..')
-    
-    cwd = os.getcwd()
-
-    print(' ')
-    print(cwd)
-    print(' ')
-
-    os.chdir('logs')
-    
-    cwd = os.getcwd()
-
-    print(' ')
-    print(cwd)
-    print(' ')
 
     # features of interest for modelling
     features=['AGE_12_NUM','FTPTMAIN','SEX','EDUC',
@@ -53,13 +34,23 @@ def main():
     cat_features = list(set(df.columns)-set(numeric_features))
     cat_features.remove('HRLYEARN')
 
-
-    df = encode_onehot(df,cat_features)
-
     X=df.drop('HRLYEARN', axis=1)
     y=df[['HRLYEARN']] 
+    
 
+    ct = ColumnTransformer([
+        ("numeric", MinMaxScaler(), numeric_features),
+        ("categorial", OneHotEncoder(), cat_features)
+    ])
 
+    pipe = Pipeline([
+        ('preprocess', ct),
+        ('model', GradientBoostingRegressor(loss='absolute_error', n_estimators=100, max_depth=10))
+        ])
+
+    reg = pipe.fit(X_train, y_train.to_numpy().ravel())
+
+    
     X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=0)
 
     reg = train_model(X_train,y_train)
@@ -94,7 +85,7 @@ def main():
 
     plt.clf()
 
-    feat_importance = reg.feature_importances_.tolist()
+    feat_importance = reg.steps[1][1].feature_importances_.tolist()
     labels = np.array(X.columns).tolist()
 
     importances = aggregate_importance(feat_importance,labels,cat_features)
@@ -106,22 +97,6 @@ def main():
 
     return
 
-
-
-def normalize_data(df,numeric_features):
-
-    scaler = MinMaxScaler()
-    df[numeric_features] = scaler.fit_transform(df[numeric_features])
-
-    return df
-
-
-
-def encode_onehot(df,cat_features):
-     
-    df = pd.get_dummies(df,columns=cat_features)       
-
-    return df
 
 
 def aggregate_importance(feature_importance,labels,cat_features):
