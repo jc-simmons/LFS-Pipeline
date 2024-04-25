@@ -51,23 +51,24 @@ def main():
 
 def update_data(date,url):
 
-    path = 'data'
-
-    dir_list = os.listdir(path)
+    path='../data'
+    os.chdir('data')
+    
+    dir_list = os.listdir()
     for item in dir_list:
         os.remove(os.path.join(path,item))
         
 
     file_name = str(date[1]) + '-' + '{:02d}'.format(date[0]) + '-CSV' + '.zip'
-    file_path = os.path.join(path, file_name)
 
-    urllib.request.urlretrieve(url+file_name, file_path)
-    unzip(file_path)
+    urllib.request.urlretrieve(url+file_name, file_name)
+    unzip(file_name)
 
-    os.rename('data/pub'+'{:02d}'.format(date[0])+str(date[1])[-2:]+'.csv', 'data/raw_lfs_data.csv')
-    np.savetxt('data/data_version.txt', date, fmt="%s")
+    os.rename('pub'+'{:02d}'.format(date[0])+str(date[1])[-2:]+'.csv', 'data/raw_lfs_data.csv')
+    np.savetxt('data_version.txt', date, fmt="%s")
 
-
+    os.chdir('../')
+    
     return 
 
 
