@@ -10,13 +10,13 @@ import pandas as pd
 
 def main():
 
-    os.chdir('data')
+    #os.chdir('data')
 
     url='https://www150.statcan.gc.ca/n1/pub/71m0001x/2021001/'
 
     latest_version = get_latest(url)
 
-    version_path = 'data_version.txt'
+    version_path = 'data/data_version.txt'
 
 
     if os.path.exists(version_path):
@@ -51,7 +51,7 @@ def main():
 
 def update_data(date,url):
 
-    path = '../data'
+    path = 'data'
 
     dir_list = os.listdir()
     for item in dir_list:
@@ -64,8 +64,8 @@ def update_data(date,url):
     urllib.request.urlretrieve(url+file_name, file_name)
     unzip(file_name)
 
-    os.rename('pub'+'{:02d}'.format(date[0])+str(date[1])[-2:]+'.csv', 'raw_lfs_data.csv')
-    np.savetxt('data_version.txt', date, fmt="%s")
+    os.rename('data/pub'+'{:02d}'.format(date[0])+str(date[1])[-2:]+'.csv', 'data/raw_lfs_data.csv')
+    np.savetxt('data/data_version.txt', date, fmt="%s")
 
 
     return 
