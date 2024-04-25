@@ -120,9 +120,6 @@ def aggregate_importance(feature_importance,labels,cat_features):
     return final_importances
 
 
-def returner():
-    return
-
 # run script
 if __name__ == "__main__":
     
