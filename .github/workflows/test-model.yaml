@@ -10,6 +10,8 @@ jobs:
    
       - name: Access the repo
         uses: actions/checkout@v2
+        with:
+          path: ${{ github.repository }}
 
       - name: Configure Python
         uses: actions/setup-python@v2
