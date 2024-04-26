@@ -1,4 +1,4 @@
-# LFS-Analysis #
+# Labour Force Survey Analysis #
 
 This repository contains a data project using monthly updated Statscan labour force survey public use microdata files. The main objective of the analysis is to determine the primary factors influencing income amount by exploring and modelling hourly earnings to derive feature importance. A second objective is to provide a demonstration of an automated data processing pipeline using Github actions with conditional run-time parameters. 
 
