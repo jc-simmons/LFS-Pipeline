@@ -1,6 +1,6 @@
 # Labour Force Survey Analysis #
 
-This repository contains a data project using monthly updated Statscan labour force survey public use microdata files. The main objective of the analysis is to determine the primary factors influencing income amount by exploring and modelling hourly earnings to derive feature importance. A second objective is to provide a demonstration of an automated data processing pipeline using Github actions with conditional run-time parameters. 
+This repository contains a data project using monthly updated StatCan labour force survey public use microdata files. The main objective of the analysis is to determine the primary factors influencing income amount by exploring and modelling hourly earnings to derive feature importance. A second objective is to provide a demonstration of an automated data processing pipeline using Github actions with conditional run-time parameters. 
 
 The LFS-analysis notebook contains the initial exploration, analysis, and machine learning predictions. Codes contained in the pipeline-scripts folder are used to run an automated data pipeline using a Github actions workflow on a cron schedule. During execution the scripts check the current version with the latest available from Statscan. If the versions do not match, the data is retrieved, extracted, decoded, modelled, and the desired results are saved to the log folder. If the versions do match there is no updated and the pipeline exits successfully. 
 
