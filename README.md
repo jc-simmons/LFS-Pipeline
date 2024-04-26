@@ -7,6 +7,7 @@ The LFS-analysis notebook contains the initial exploration, analysis, and machin
 
 
 Disclaimer:
+
 This work is for personal interest and is shown for demonstrative purposes only. Only publicly available, open-license data from Statistics Canada is used. No attempt to is made to reverse engineer the data or identify individuals. I have no contact with Statistics Canada nor does this work constitute an endorsement by Statistics Canada in any way. The data are not aggreggated with other datasets in any way. 
 
 Data source:
