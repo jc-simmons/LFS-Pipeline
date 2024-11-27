@@ -3,119 +3,126 @@ import urllib.request
 import requests
 import os
 import datetime
-import numpy as np
-import pandas as pd
-
-
+import pathlib as Path
+import json
 
 def main():
 
-    #os.chdir('data')
+    config = load_config('config.json')
 
-    url='https://www150.statcan.gc.ca/n1/pub/71m0001x/2021001/'
+    try:
+        SOURCE_URL = config['SOURCE_URL']
+        VERSION_PATH = Path(config['VERSION_PATH'])
+        DATA_DIRECTORY = Path(config['DATA DIRECTORY'])
+        MAX_LOOKBACK_MONTHS = config['MAX_LOOKBACK_MONTHS']
+    except Exception as e:
+        print(f'Error parsing config: {e}' )
+        exit(1)
 
-    latest_version = get_latest(url)
+    # date-year stamps for versions
+    latest_version = get_latest(SOURCE_URL, MAX_LOOKBACK_MONTHS)
+    current_version = read_version(VERSION_PATH)
 
-    version_path = 'data/data_version.txt'
+    if current_version == latest_version:
+        return  # Exit early if the data is up-to-date.
 
-
-    if os.path.exists(version_path):
-
-        current_version = np.loadtxt(version_path)
-
-        if (all(current_version == latest_version)):
-
-            return
-
-
-
-    update_data(latest_version,url)
-    """Sets the GitHub Action output.
-
-    Keyword arguments:
-    output_name - The name of the output
-    value - The value of the output
-    """
-    output_status = 'status'
-    value = 'updated'
+    update_data(latest_version, SOURCE_URL, DATA_DIRECTORY)
         
+    # If running in GitHub Actions, set output    
     if "GITHUB_OUTPUT" in os.environ :
-        with open(os.environ["GITHUB_OUTPUT"], "a") as f :
-            print("{0}={1}".format(output_status, value), file=f)
-
+        set_github_output('status', 'updated')
    
-    return 
+
+def load_config(config_path):
+    try: 
+        with open(config_path, 'r') as cfg:
+            config = json.load(cfg)
+        return config
+    except Exception as e:
+        print(f"Error loading config: {e}")
+        return None
 
 
+def set_github_output(output_name, value):
+    """Sets the GitHub Action output."""
+    with open(os.environ["GITHUB_OUTPUT"], "a") as f:
+        f.write(f"{output_name}={value}\n")
 
 
-def update_data(date,url):
-
-    path='../data'
-    os.chdir('data')
+def read_version(version_path):
+    """Read version from the JSON version file."""
+    try:
+        with open(version_path, 'r') as f:
+            version_data = json.load(f)
+            return version_data['version'].split('-')
+    except FileNotFoundError:
+        print(f"Version file not found")
+        return None  
+    except Exception as e:
+        print(f"Unexpected error reading version file: {e}")
+        return None  
     
-    dir_list = os.listdir()
-    for item in dir_list:
-        os.remove(os.path.join(path,item))
-        
 
-    file_name = str(date[1]) + '-' + '{:02d}'.format(date[0]) + '-CSV' + '.zip'
+def write_version(date, version_path):
+    """Write the current version to the JSON version file."""
+    version_data = {
+        'version': f"{date[0]}-{date[1]}"
+    }
+    with open(version_path, 'w') as f:
+        json.dump(version_data, f)
 
-    urllib.request.urlretrieve(url+file_name, file_name)
+
+def update_data(date, source_url, data_directory):
+    """Download and unzip the most recent data file."""
+
+    data_directory.mkdir(parents=True, exist_ok=True)
+
+    # Clear existing data
+    for item in data_directory.iterdir():
+        if item.is_file():
+            item.unlink()
+
+    file_name = f"{date[1]}-{date[0]:02d}-CSV.zip"
+    file_url = source_url + file_name
+
+    urllib.request.urlretrieve(file_url, file_name)
     unzip(file_name)
 
-    os.rename('pub'+'{:02d}'.format(date[0])+str(date[1])[-2:]+'.csv', 'raw_lfs_data.csv')
-    np.savetxt('data_version.txt', date, fmt="%s")
-
-    os.chdir('../')
+    csv_path =  f"pub{date[0]:02d}{str(date[1])[-2:]}.csv"
+    os.rename(csv_path, data_directory / 'raw_data.csv')
     
-    return 
+    write_version(date)
 
 
+def get_latest(url, lookback_months):
+    """ Searches StatCan for the most recent LFS microdata file"""
+    current_date = datetime.datetime.now()
+    month = current_date.month
+    year = current_date.year
 
-#Searches for the most recently updated LFS microdata file from Statscan going back max_months = 3 .
-def get_latest(url):
-
-
-    max_months = 3
-
-    date = datetime.datetime.now()
-    month = date.month
-    year = date.year
-
-    for i in range(max_months):
-
-        year = year if month > 1 else year - 1
-        month = month-1 if month > 1 else 12
-
-
-        file_name = str(year) + '-' + '{:02d}'.format(month) + '-CSV' + '.zip'
-
-        if exists(url + file_name):
-
+    for _ in range(lookback_months):
+        year, month = (year, month-1) if month > 1 else (year-1, 12)
+        file_name = f"{year}-{month:02d}-CSV.zip"
+        if url_exists(url + file_name):
             return [month, year]
-
     
-    raise Exception(f"No LFS data found at source in past {max_months} months")
+    raise Exception(f"No LFS data found at source in past {lookback_months} months")
 
 
-    return
-
-
-
-
-def exists(path):
-    r = requests.head(path)
-    return r.status_code == requests.codes.ok
-
-
+def url_exists(path):
+    """Check if the file exists at the given URL."""
+    try:
+        response = requests.head(path)
+        return response.status_code == requests.codes.ok
+    except requests.RequestException as e:
+        print(f"Error accessing url file: {e}")
+        return False
+    
 
 def unzip(zip_file):
-    
     with ZipFile(zip_file, 'r') as zip_ref:
         zip_ref.extractall()
-    
-    
+    os.remove(zip_file)
     return 
 
 

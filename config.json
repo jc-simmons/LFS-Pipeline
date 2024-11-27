@@ -1,0 +1,6 @@
+{
+    "SOURCE_URL": "https://www150.statcan.gc.ca/n1/pub/71m0001x/2021001/",
+    "VERSION_PATH": "data_version.json",
+    "DATA_DIRECTORY": "data",
+    "MAX_LOOKBACK_MONTHS": 3
+}
